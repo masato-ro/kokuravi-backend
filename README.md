@@ -57,9 +57,9 @@ Kokuravi is a bookmark management system that allows users to organize their boo
 
 ## API Endpoints
 
-/bookmarks: CRUD operations for bookmarks
-/categories: Manage categories
-/users: User registration and authentication
+- /bookmarks: CRUD operations for bookmarks
+- /categories: Manage categories
+- /users: User registration and authentication
 
 ## License
 
