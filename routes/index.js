@@ -14,13 +14,13 @@ dotenv.config();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Express', inputVariable: '' });
+  res.render('index', { title: 'Express', inputVariable: '', message: null });
 });
 
 // POST form data
 router.post('/submit', (req, res) => {
   const inputVariable = req.body.inputVariable; // 獲取輸入的變數
-  res.render('index', { title: 'Express', inputVariable });
+  res.render('index', { title: 'Express', inputVariable, message: null });
 });
 
 // 更新 .env 文件
