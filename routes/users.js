@@ -57,7 +57,19 @@ router.post('/', async (req, res) => {
   if (!isValidEmail(email)) {
     return res.status(400).json({ error: 'Invalid email format' });
   }
-
+  
+  // 檢查用戶名和電子郵件是否已經存在
+  const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+  if (existingUser) {
+    if (existingUser.username === username) {
+      return res.status(400).json({ error: 'Username is already taken' });
+    }
+    if (existingUser.email === email) {
+      return res.status(400).json({ error: 'Email is already registered' });
+    }
+  }
+  
+  // 哈希密碼
   const hashedPassword = await bcrypt.hash(password, 10);
   const user = new User({ username, password: hashedPassword, email });
 
